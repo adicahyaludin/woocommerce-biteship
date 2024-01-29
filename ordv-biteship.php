@@ -120,10 +120,10 @@ run_ordv_biteship();
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://github.com/orangerdev/woocommerce-biteship',
+	'https://github.com/adicahyaludin/woocommerce-biteship',
 	__FILE__,
 	'woocommerce-biteship'
 );
 
 $myUpdateChecker->setBranch('main');
-$myUpdateChecker->setAuthentication('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');
+$myUpdateChecker->setAuthentication('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');
