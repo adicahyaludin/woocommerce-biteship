@@ -126,4 +126,4 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 );
 
 $myUpdateChecker->setBranch('main');
-$myUpdateChecker->setAuthentication('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');
+$myUpdateChecker->setAuthentication('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');
