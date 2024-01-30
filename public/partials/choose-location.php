@@ -1,5 +1,5 @@
 <?php
-$taxonomy    = 'pa_lokasi';
+$taxonomy    = 'pa_location';
 $terms       = get_terms($taxonomy);
 $loc_default = carbon_get_theme_option( 'biteship_location_default' );
 $loc_cookie  = isset($_COOKIE['wb_loc']) ? $_COOKIE['wb_loc'] : '';

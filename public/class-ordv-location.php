@@ -106,7 +106,7 @@ class Ordv_Biteship_Location {
 
 			if ( $product->is_type('variable') ) :
 
-				$att_terms = wc_get_product_terms($product->get_id(), 'pa_lokasi', array('fields' => 'all'));
+				$att_terms = wc_get_product_terms($product->get_id(), 'pa_location', array('fields' => 'all'));
 				$loc_arr = [];
 				foreach ($att_terms as $term) :
 					$loc_arr[$term->slug] = $term->description;
@@ -118,8 +118,8 @@ class Ordv_Biteship_Location {
 					$variation = wc_get_product($variation_id);
 					$attributes = $variation->get_variation_attributes();
 
-					if (isset($attributes['attribute_pa_size']) && 
-						$attributes['attribute_pa_size'] === $size ) :
+					if (isset($attributes['attribute_ukuran']) && 
+						$attributes['attribute_ukuran'] === $size ) :
 
 						$is_manage_stock = $variation->get_manage_stock();
 						$variation_stock_quantity = intval($variation->get_stock_quantity());			
@@ -134,7 +134,7 @@ class Ordv_Biteship_Location {
 							$stock_label = 'tersedia';
 						endif;
 
-						$loc_name = $attributes['attribute_pa_lokasi'];
+						$loc_name = $attributes['attribute_pa_location'];
 						$loc_desc = '';
 						if ( isset( $loc_arr[$loc_name] ) ) :
 							$loc_desc = $loc_arr[$loc_name];
@@ -165,6 +165,41 @@ class Ordv_Biteship_Location {
 				'loc_stores_html' => $loc_stores_html
 			];
 			wp_send_json( $data );
+
+		endif;
+
+	}
+
+	public function set_location_by_external(){
+
+		if ( is_product() ) :
+
+			$loc_default = carbon_get_theme_option( 'biteship_location_default' );
+			$loc_cookie  = isset($_COOKIE['wb_loc']) ? $_COOKIE['wb_loc'] : '';
+			if ( $loc_cookie ) :
+				$loc_default = $loc_cookie;
+			endif;
+			if ( isset( $_GET['attribute_pa_location'] ) && !empty( $_GET['attribute_pa_location'] ) ) :
+				$loc_default = $_GET['attribute_pa_location'];
+			endif;
+			if ( $loc_default ) :
+				setcookie('wb_loc', $loc_default, time() + (86400 * 30), "/");
+			endif;
+			?>
+			<script>
+			jQuery(document).ready(function(e){
+				
+				if ( $('#pa_location').length > 0 ) {
+
+					var loc = '<?php echo $loc_default; ?>';
+					$('#pa_location').val(loc);
+					$('#pa_location').trigger("change");
+
+				}
+
+			});
+			</script>
+			<?php
 
 		endif;
 

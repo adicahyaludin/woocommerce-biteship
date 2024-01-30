@@ -68,8 +68,8 @@ function ordv_biteship_fn_get_packages_data(){
     foreach($items as $item => $values) : 
 
         $product = $values['data'];
-        $item_attribute = $product->get_attribute( 'pa_lokasi' );
-        $item_term      = get_term_by( 'name', $item_attribute, 'pa_lokasi' );
+        $item_attribute = $product->get_attribute( 'pa_location' );
+        $item_term      = get_term_by( 'name', $item_attribute, 'pa_location' );
         $area_id        = get_term_meta( $item_term->term_taxonomy_id, '_origin_area_id', true);
         $area_text      = get_term_meta( $item_term->term_taxonomy_id, '_origin_area_text', true);
         $origin_id	    = $area_id;

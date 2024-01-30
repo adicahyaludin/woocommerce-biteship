@@ -20,7 +20,7 @@
     }
 
     $(document).ready(function(){
-        $("#pa_lokasi").closest("tr").hide();
+        $("#pa_location").closest("tr").hide();
     });
 
 	$(document).on('change','#wb-choose-location',function(e){
@@ -37,7 +37,7 @@
 		
         $('.wb-check-location-store-popup').show();
 
-        var size = $('#pa_size').val();
+        var size = $('#ukuran').val();
         var product_id = $('#wb_product_id').val();
 
         $.ajax({
@@ -84,33 +84,21 @@
 		e.preventDefault();
 		
         var loc = wbGetCookie('wb_loc');
-        $('#pa_lokasi').val(loc);
-        $('#pa_lokasi').trigger("change");
+        $('#pa_location').val(loc);
+        $('#pa_location').trigger("change");
 	});
 
     $(document).on('click','.wb-location-store-choose-btn',function(e){
 		e.preventDefault();
 		
         var loc = $(this).attr('data-loc');
-        $('#pa_lokasi').val(loc);
-        $('#pa_lokasi').trigger("change");
+        $('#pa_location').val(loc);
+        $('#pa_location').trigger("change");
 
         $('.wb-check-location-store-popup').hide();
 	});
 
-    $(document).ready(function(e){
-	
-        if ( $('#pa_lokasi').length > 0 ) {
-
-            var loc = wbGetCookie('wb_loc');
-            $('#pa_lokasi').val(loc);
-            $('#pa_lokasi').trigger("change");
-
-        }
-
-    });
-
-    $(document).on('change','#pa_size',function(e){
+    $(document).on('change','#ukuran',function(e){
 		e.preventDefault();
 
         if ( $('.stock.out-of-stock').length > 0 ) {
@@ -125,10 +113,10 @@
 		
 	});
 
-    $(document).on('change','#pa_lokasi',function(e){
+    $(document).on('change','#pa_location',function(e){
 		e.preventDefault();
 
-        var loc_name = $("#pa_lokasi option:selected").text();
+        var loc_name = $("#pa_location option:selected").text();
         $('.wb-loc-store-name').html(loc_name);
 
         if ( $('.stock.out-of-stock').length > 0 ) {

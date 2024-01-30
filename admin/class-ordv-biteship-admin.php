@@ -164,7 +164,7 @@ class Ordv_Biteship_Admin {
 
 		$options = array();
 
-		$taxonomy = 'pa_lokasi';
+		$taxonomy = 'pa_location';
 		$terms = get_terms($taxonomy);
 		foreach ($terms as $key => $term) :
 			$options[$term->slug] = $term->name;

@@ -5,11 +5,11 @@ if ( $loc_cookie ) :
     $loc_name = $loc_cookie;
 endif;
 
-if ( isset( $_GET['attribute_pa_lokasi'] ) && !empty( $_GET['attribute_pa_lokasi'] ) ) :
-    $loc_name = $_GET['attribute_pa_lokasi'];
+if ( isset( $_GET['attribute_pa_location'] ) && !empty( $_GET['attribute_pa_location'] ) ) :
+    $loc_name = $_GET['attribute_pa_location'];
 endif;
 
-$term = get_term_by('slug', $loc_name, 'pa_lokasi');
+$term = get_term_by('slug', $loc_name, 'pa_location');
 if ($term) :
     $loc_name = $term->name;
 endif;

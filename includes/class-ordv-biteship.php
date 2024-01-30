@@ -271,6 +271,7 @@ class Ordv_Biteship {
 
 		$plugin_location = new Ordv_Biteship_Location( $this->get_plugin_name(), $this->get_version() );
 
+		$this->loader->add_action( 'wp_footer', 			$plugin_location, 'set_location_by_external', 999, 1);
 		$this->loader->add_action( 'wp_footer', 			$plugin_location, 'display_sticky_choose_location', 999, 1);
 		$this->loader->add_action( 'wp_enqueue_scripts', 	$plugin_location, 'enqueue_scripts', 999, 1);
 		$this->loader->add_action( 'woocommerce_before_add_to_cart_quantity', 	$plugin_location, 'display_check_location_store', 999, 1);
