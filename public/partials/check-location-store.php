@@ -18,7 +18,7 @@ endif;
 if ( $loc_name ) :
 ?>
     <div class="wb-loc-store">
-        <p>Rank Sports Location: <b><?php echo $loc_name; ?></b></p>
+        <p>Rank Sports Location: <b><span class="wb-loc-store-name"><?php echo $loc_name; ?></span></b></p>
     </div>
 <?php
 endif;

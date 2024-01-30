@@ -19,9 +19,9 @@
         return null;
     }
 
-    // $(document).ready(function(){
-    //     $("#pa_lokasi").closest("tr").hide();
-    // });
+    $(document).ready(function(){
+        $("#pa_lokasi").closest("tr").hide();
+    });
 
 	$(document).on('change','#wb-choose-location',function(e){
 		e.preventDefault();
@@ -82,6 +82,14 @@
         $('.wb-check-location-store-popup').hide();
 	});
 
+    $(document).on('click','.reset_variations',function(e){
+		e.preventDefault();
+		
+        var loc = wbGetCookie('wb_loc');
+        $('#pa_lokasi').val(loc);
+        $('#pa_lokasi').trigger("change");
+	});
+
     $(document).on('click','.wb-location-store-choose-btn',function(e){
 		e.preventDefault();
 		
@@ -92,15 +100,39 @@
         $('.wb-check-location-store-popup').hide();
 	});
 
-    // $(document).on('change','#pa_size',function(e){
-	// 	e.preventDefault();
+    $(document).ready(function(e){
+	
+        if ( $('#pa_lokasi').length > 0 ) {
+
+            var loc = wbGetCookie('wb_loc');
+            $('#pa_lokasi').val(loc);
+            $('#pa_lokasi').trigger("change");
+
+        }
+
+    });
+
+    $(document).on('change','#pa_size',function(e){
+		e.preventDefault();
+
+        if ( $('.stock.out-of-stock').length > 0 ) {
+
+            $('.wb-check-location-store-open-btn').css('display','inline-block');
+
+        } else {
+
+            $('.wb-check-location-store-open-btn').hide();
+
+        }
 		
-    //     var val = $(this).val();
+	});
 
-    //     var loc = wbGetCookie('wb_loc');
-    //     $('#pa_lokasi').val(loc);
-    //     $('#pa_lokasi').trigger("change");
+    $(document).on('change','#pa_lokasi',function(e){
+		e.preventDefault();
 
-	// });
+        var loc_name = $("#pa_lokasi option:selected").text();
+        $('.wb-loc-store-name').html(loc_name);
+		
+	});
 
 })( jQuery );

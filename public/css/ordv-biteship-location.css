@@ -18,6 +18,9 @@
 .wb-check-location-store-wrap {
     margin-bottom: 30px;
 }
+.wb-check-location-store-open-btn {
+    display: none;
+}
 .wb-check-location-store-open-btn,
 .wb-check-location-store-open-btn:hover {
     border: 1px solid #4381A6;
