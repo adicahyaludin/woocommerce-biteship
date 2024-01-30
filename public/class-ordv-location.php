@@ -121,7 +121,18 @@ class Ordv_Biteship_Location {
 					if (isset($attributes['attribute_pa_size']) && 
 						$attributes['attribute_pa_size'] === $size ) :
 
-						$variation_stock_quantity = $variation->get_stock_quantity();			
+						$is_manage_stock = $variation->get_manage_stock();
+						$variation_stock_quantity = intval($variation->get_stock_quantity());			
+
+						if ( $is_manage_stock ) :
+							if ( $variation_stock_quantity > 0 ) :
+								$stock_label = $variation_stock_quantity.' tersedia';
+							else:
+								$stock_label = 'stok kosong';
+							endif;
+						else:
+							$stock_label = 'tersedia';
+						endif;
 
 						$loc_name = $attributes['attribute_pa_lokasi'];
 						$loc_desc = '';
@@ -138,7 +149,7 @@ class Ordv_Biteship_Location {
 							</div>
 							<div class="wb-col-30 wb-location-store-action">
 								<button data-loc="<?php echo $loc_name; ?>" class="wb-location-store-choose-btn" type="button"><?php _e('Beli Di Sini','ordv-biteship'); ?></button>
-								<p><?php echo $variation_stock_quantity; ?> tersedia</p>
+								<p><?php echo $stock_label; ?></p>
 							</div>
 						</div> 
 						<?php

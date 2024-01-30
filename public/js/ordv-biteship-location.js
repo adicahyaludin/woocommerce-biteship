@@ -30,8 +30,6 @@
 
         wbSetCookie('wb_loc',val);
 
-        // var wb_loc = wbGetCookie('wb_loc');
-        // console.log('wb_loc: '+wb_loc);
 	});
 
     $(document).on('click','.wb-check-location-store-open-btn',function(e){
@@ -132,6 +130,16 @@
 
         var loc_name = $("#pa_lokasi option:selected").text();
         $('.wb-loc-store-name').html(loc_name);
+
+        if ( $('.stock.out-of-stock').length > 0 ) {
+
+            $('.wb-check-location-store-open-btn').css('display','inline-block');
+
+        } else {
+
+            $('.wb-check-location-store-open-btn').hide();
+
+        }
 		
 	});
 
